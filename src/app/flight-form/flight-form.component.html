@@ -1,0 +1,53 @@
+<form [formGroup]="flightForm" (ngSubmit)="onSubmit()" class="flight-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Origin Airport</mat-label>
+    <input matInput placeholder="Enter Origin Airport" formControlName="originAirport">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Destination Airport</mat-label>
+    <input matInput placeholder="Enter Destination Airport" formControlName="destinationAirport">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Departure Date and Time</mat-label>
+    <input matInput type="datetime-local" formControlName="departureDateTime">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Arrival Date and Time</mat-label>
+    <input matInput type="datetime-local" formControlName="arrivalDateTime">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Airline</mat-label>
+    <mat-select formControlName="airline">
+      <mat-option *ngFor="let airline of airlines" [value]="airline">
+        {{ airline }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Flight Number</mat-label>
+    <input matInput placeholder="Enter Flight Number" formControlName="flightNumber">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Aircraft Type</mat-label>
+    <mat-select formControlName="aircraftType">
+      <mat-option *ngFor="let type of aircraftTypes" [value]="type">
+        {{ type }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Available Seats</mat-label>
+    <input matInput placeholder="Enter Number of Available Seats" formControlName="availableSeats" type="number">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!flightForm.valid">
+    Create Flight
+  </button>
+
+</form>
